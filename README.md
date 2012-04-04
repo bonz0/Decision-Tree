@@ -87,3 +87,5 @@ The column we want to predict is *restaurant*. The class labels are:
     make clean
     make
     ./dtree train.dat test.dat
+
+After the program finishes execution, open `decisionTreeOutput.txt` to view the output.
