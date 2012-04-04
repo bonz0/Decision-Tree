@@ -12,7 +12,7 @@ Contact email: farhang.bonzo@gmail.com
 Notes:
 ------
 
-The program takes two files as input; a training file and a testing file. The output of the program is stored in a file named: `decisionTree.output`.
+The program takes two files as input; a training file and a testing file. The output of the program is stored in a file named: `decisionTreeOutput.txt`.
 
 ### Input file format:
 
