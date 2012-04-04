@@ -1,0 +1,56 @@
+  #     Given Class                Predicted Class
+--------------------------------------------------
+  1     Buck-I-Mart  ------------  Buck-I-Mart
+  2         Oxley's  xxxxxxxxxxxx  Brennan's
+  3     Buck-I-Mart  ------------  Buck-I-Mart
+  4     Buck-I-Mart  ------------  Buck-I-Mart
+  5     Buck-I-Mart  ------------  Buck-I-Mart
+  6     Buck-I-Mart  ------------  Buck-I-Mart
+  7     Buck-I-Mart  ------------  Buck-I-Mart
+  8     Buck-I-Mart  ------------  Buck-I-Mart
+  9    Oxley's cafe  ------------  Oxley's cafe
+ 10       Brennan's  xxxxxxxxxxxx  Buck-I-Mart
+ 11     Buck-I-Mart  xxxxxxxxxxxx  Oxley's cafe
+ 12         Oxley's  ------------  Oxley's
+ 13     Buck-I-Mart  ------------  Buck-I-Mart
+ 14     Buck-I-Mart  ------------  Buck-I-Mart
+ 15    Oxley's cafe  xxxxxxxxxxxx  Oxley's
+ 16     Buck-I-Mart  ------------  Buck-I-Mart
+ 17     Buck-I-Mart  ------------  Buck-I-Mart
+ 18     Buck-I-Mart  xxxxxxxxxxxx  Oxley's cafe
+ 19       Brennan's  ------------  Brennan's
+ 20     Buck-I-Mart  ------------  Buck-I-Mart
+ 21       Brennan's  xxxxxxxxxxxx  Oxley's
+ 22     Buck-I-Mart  ------------  Buck-I-Mart
+ 23     Buck-I-Mart  ------------  Buck-I-Mart
+ 24     Buck-I-Mart  ------------  Buck-I-Mart
+ 25     Buck-I-Mart  ------------  Buck-I-Mart
+ 26         Oxley's  ------------  Oxley's
+ 27     Buck-I-Mart  ------------  Buck-I-Mart
+ 28     Buck-I-Mart  ------------  Buck-I-Mart
+ 29     Buck-I-Mart  ------------  Buck-I-Mart
+ 30    Oxley's cafe  ------------  Oxley's cafe
+ 31       Brennan's  ------------  Brennan's
+ 32       Brennan's  ------------  Brennan's
+ 33     Buck-I-Mart  ------------  Buck-I-Mart
+ 34    Oxley's cafe  ------------  Oxley's cafe
+ 35     Buck-I-Mart  ------------  Buck-I-Mart
+ 36       Brennan's  ------------  Brennan's
+ 37         Oxley's  xxxxxxxxxxxx  Brennan's
+ 38       Brennan's  ------------  Brennan's
+ 39       Brennan's  ------------  Brennan's
+ 40       Brennan's  ------------  Brennan's
+ 41       Brennan's  ------------  Brennan's
+ 42     Buck-I-Mart  ------------  Buck-I-Mart
+ 43       Brennan's  ------------  Brennan's
+ 44     Buck-I-Mart  ------------  Buck-I-Mart
+ 45     Buck-I-Mart  ------------  Buck-I-Mart
+ 46       Brennan's  ------------  Brennan's
+ 47     Buck-I-Mart  ------------  Buck-I-Mart
+ 48     Buck-I-Mart  ------------  Buck-I-Mart
+ 49     Buck-I-Mart  xxxxxxxxxxxx  Brennan's
+ 50       Brennan's  ------------  Brennan's
+--------------------------------------------
+Total number of instances in test data = 50
+Number of correctly predicted instances = 42
+Accuracy of decision tree classifier = 84%
