@@ -2,8 +2,9 @@ Decision Tree Classifier
 ========================
 
 Author: Farhang Zia  
-Department of Computer Science and Engineering,  
-The Ohio State University, Columbus.
+Graduate Student  
+*Department of Computer Science and Engineering,*  
+*The Ohio State University, Columbus.*
 
 Contact email: [farhang.bonzo@gmail.com](mailto:farhang.bonzo@gmail.com).
 
