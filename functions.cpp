@@ -1,6 +1,10 @@
 #include "header.h"
 
-void parse(string& someString, vvs &attributeTable)		// Stores data taken from an input file into a vector of vector of strings 
+/* 
+ * Parses a string and stores data
+ * into a vector of vector of strings
+ */
+void parse(string& someString, vvs &attributeTable)
 {
 	int attributeCount = 0;
 	vs vectorOfStrings;
@@ -18,18 +22,29 @@ void parse(string& someString, vvs &attributeTable)		// Stores data taken from a
 	vectorOfStrings.clear();
 }
 
-void printAttributeTable(vvs &attributeTable)	// For debugging purposes only. Prints a data table
+/*
+ * Prints a vector of vector of strings
+ * For debugging purposes only.
+ */
+void printAttributeTable(vvs &attributeTable)
 {
 	int inner, outer;
 	for (outer = 0; outer < attributeTable.size(); outer++)
 	{
 		for (inner = 0; inner < attributeTable[outer].size(); inner++)
+		{
 			cout << attributeTable[outer][inner] << "\t";
+		}
 		cout << endl;
 	}
 }
 
-vvs pruneTable(vvs &attributeTable, string &colName, string value)	// Prunes a table based on a column/attribute's name and the value of that attribute. Removes that column and all instances that have that value for that column
+/*
+ * Prunes a table based on a column/attribute's name
+ * and value of that attribute. Removes that column
+ * and all rows that have that value for that column.
+ */
+vvs pruneTable(vvs &attributeTable, string &colName, string value)
 {
 	int iii, jjj;
 	vvs prunedTable;
@@ -46,7 +61,9 @@ vvs pruneTable(vvs &attributeTable, string &colName, string value)	// Prunes a t
 	for (iii = 0; iii < attributeTable[0].size(); iii++)
 	{
 		 if (iii != column)
+		 {
 		 	headerRow.push_back(attributeTable[0][iii]);
+		 }
 	}
 	prunedTable.push_back(headerRow);
 	for (iii = 0; iii < attributeTable.size(); iii++)
@@ -56,9 +73,10 @@ vvs pruneTable(vvs &attributeTable, string &colName, string value)	// Prunes a t
 		{
 			for (jjj = 0; jjj < attributeTable[iii].size(); jjj++)
 			{
-				if(jjj == column) {}
-				else
+				if(jjj != column)
+				{
 					auxRow.push_back(attributeTable[iii][jjj]);
+				}
 			}
 			prunedTable.push_back(auxRow);
 		}
@@ -66,10 +84,16 @@ vvs pruneTable(vvs &attributeTable, string &colName, string value)	// Prunes a t
 	return prunedTable;
 }
 
-node* buildDecisionTree(vvs &table, node* nodePtr, vvs &tableInfo)	// Builds the decision tree based on the table it is passed
+/*
+ * Recursively builds the decision tree based on
+ * the data that it is passed and tha table info.
+ */
+node* buildDecisionTree(vvs &table, node* nodePtr, vvs &tableInfo)
 {
 	if (tableIsEmpty(table))
+	{
 		return NULL;
+	}
 	if (isHomogeneous(table))
 	{
 		nodePtr->isLeaf = true;
@@ -96,7 +120,13 @@ node* buildDecisionTree(vvs &table, node* nodePtr, vvs &tableInfo)	// Builds the
 	return nodePtr;
 }
 
-bool isHomogeneous(vvs &table)		// Returns true if all instances in a subtable at a node have the same class label
+/*
+ * Returns true if all rows in a subtable
+ * at a node have the same class label.
+ * This means that that node's class label
+ * has been decided.
+ */
+bool isHomogeneous(vvs &table)
 {
 	int iii;
 	int lastCol = table[0].size() - 1;
@@ -104,12 +134,18 @@ bool isHomogeneous(vvs &table)		// Returns true if all instances in a subtable a
 	for (iii = 1; iii < table.size(); iii++)
 	{
 		if (firstValue != table[iii][lastCol])
+		{
 			return false;
+		}
 	}
 	return true;
 }
 
-vi countDistinct(vvs &table, int column)		// Returns a vector of integers containing the counts of all the various values of an attribute/column
+/*
+ * Returns a vector of integers containing the counts
+ * of all the various values of an attribute/column.
+ */
+vi countDistinct(vvs &table, int column)
 {
 	vs vectorOfStrings;
 	vi counts;
@@ -134,11 +170,15 @@ vi countDistinct(vvs &table, int column)		// Returns a vector of integers contai
 			vectorOfStrings.push_back(table[iii][column]);
 		}
 		else
+		{
 			counts[foundIndex]++;
+		}
 	}
 	int sum = 0;
 	for (int iii = 0; iii < counts.size(); iii++)
+	{
 		sum += counts[iii];
+	}
 	counts.push_back(sum);
 	return counts;
 }
@@ -160,7 +200,9 @@ string decideSplittingColumn(vvs &table)		// Returns the column on which to spli
 		{
 			double entropy = 0.0;
 			if (tempMap.find(table[iii][column]) != tempMap.end()) 	// IF ATTRIBUTE IS ALREADY FOUND IN A COLUMN, UPDATE IT'S FREQUENCY
+			{
 				tempMap[table[iii][column]]++;
+			}
 			else							// IF ATTRIBUTE IS FOUND FOR THE FIRST TIME IN A COLUMN, THEN PROCESS IT AND CALCULATE IT'S ENTROPY
 			{
 				tempMap[table[iii][column]] = 1;
@@ -211,7 +253,9 @@ bool tableIsEmpty(vvs &table)			// Returns true if a subtable is empty
 void printDecisionTree(node* nodePtr)		// For degubbing purposes only. Recursively prints decision tree
 {
 	if(nodePtr == NULL)
+	{
 		return;
+	}
 	if (!nodePtr->children.empty())
         {
 		cout << " Value: " << nodePtr->label << endl;
@@ -279,10 +323,12 @@ double printPredictionsAndCalculateAccuracy(vs &givenData, vs &predictions)		// 
 			outputFile << "  ------------  ";
 		}
 		else
+		{
 			outputFile << "  xxxxxxxxxxxx  ";
+		}
 		outputFile << predictions[iii] << endl;
 	}
-	outputFile << "--------------------------------------------" << endl;
+	outputFile << "--------------------------------------------------" << endl;
 	outputFile << "Total number of instances in test data = " << givenData.size() << endl;
 	outputFile << "Number of correctly predicted instances = " << correct << endl;
 	outputFile.close();
@@ -304,7 +350,9 @@ vvs generateTableInfo(vvs &dataTable)		// Generates information about the table 
 				tempInfo.push_back(dataTable[jjj][iii]);
 			}
 			else
+			{
 				tempMap[dataTable[jjj][iii]]++;
+			}
 		}
 		tableInfo.push_back(tempInfo);
 	}
@@ -317,9 +365,13 @@ string returnMostFrequentClass(vvs &dataTable)		// Returns the most frequent cla
 	for (int iii = 1; iii < dataTable.size(); iii++)
 	{
 		if (trainingClasses.count(dataTable[iii][dataTable[0].size()-1]) == 0)
+		{
 			trainingClasses[dataTable[iii][dataTable[0].size()-1]] = 1;
+		}
 		else
+		{
 			trainingClasses[dataTable[iii][dataTable[0].size()-1]]++;
+		}
 	}   
 	msi::iterator mapIter;
 	int highestClassCount = 0;

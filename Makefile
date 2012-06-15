@@ -13,4 +13,4 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(CFLAGS) $< -o $@
 clean:
 	rm -rf *o dtree
-	rm -rf decisionTree.output
+	rm -rf decisionTreeOutput.txt
