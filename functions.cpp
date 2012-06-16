@@ -122,7 +122,7 @@ node* buildDecisionTree(vvs &table, node* nodePtr, vvs &tableInfo)
 
 /*
  * Returns true if all rows in a subtable
- * at a node have the same class label.
+ * have the same class label.
  * This means that that node's class label
  * has been decided.
  */
@@ -183,7 +183,12 @@ vi countDistinct(vvs &table, int column)
 	return counts;
 }
 
-string decideSplittingColumn(vvs &table)		// Returns the column on which to split on. Decision of column is based on entropy
+/*
+ * Decides which column to split on
+ * based on entropy. Returns the column
+ * with the least entropy.
+ */
+string decideSplittingColumn(vvs &table)
 {
 	int column, iii;
 	double minEntropy = DBL_MAX;
@@ -232,7 +237,11 @@ string decideSplittingColumn(vvs &table)		// Returns the column on which to spli
 	return table[0][splittingColumn];
 }
 
-int returnColumnIndex(string &columnName, vvs &tableInfo)		// Returns the index of a column in a subtable
+/*
+ * Returns an integer which is the
+ * index of a column passed as a string
+ */
+int returnColumnIndex(string &columnName, vvs &tableInfo)
 {
 	int iii;
 	for (iii = 0; iii < tableInfo.size(); iii++)
@@ -245,12 +254,20 @@ int returnColumnIndex(string &columnName, vvs &tableInfo)		// Returns the index 
 	return -1;
 }
 
-bool tableIsEmpty(vvs &table)			// Returns true if a subtable is empty
+/*
+ * Returns true if the table is empty
+ * returns false otherwise
+ */
+bool tableIsEmpty(vvs &table)
 {
 	return (table.size() == 1);
 }
 
-void printDecisionTree(node* nodePtr)		// For degubbing purposes only. Recursively prints decision tree
+/*
+ * Recursively prints the decision tree
+ * For debugging purposes only
+ */
+void printDecisionTree(node* nodePtr)
 {
 	if(nodePtr == NULL)
 	{
@@ -275,7 +292,14 @@ void printDecisionTree(node* nodePtr)		// For degubbing purposes only. Recursive
 	}
 }
 
-string testDataOnDecisionTree(vs &singleLine, node* nodePtr, vvs &tableInfo, string defaultClass)	// Runs a single instance of the test data through the decision tree. Returns the predicted class label
+/*
+ * Takes a row and traverses that row through
+ * the decision tree to find out the 
+ * predicted class label. If none is found
+ * returns the default class label which is
+ * the class label with the highest frequency.
+ */
+string testDataOnDecisionTree(vs &singleLine, node* nodePtr, vvs &tableInfo, string defaultClass)
 {
 	string prediction;
 	while (nodePtr->isLeaf != true && !nodePtr->children.empty())
@@ -294,7 +318,11 @@ string testDataOnDecisionTree(vs &singleLine, node* nodePtr, vvs &tableInfo, str
 	return prediction;
 }
 
-int returnIndexOfVector(vs &stringVector, string value)		// Returns the index of a string in a vector of strings
+/*
+ * Returns an integer which is the index
+ * of a string in a vector of strings
+ */
+int returnIndexOfVector(vs &stringVector, string value)
 {
 	int iii;
 	for (iii = 0; iii < stringVector.size(); iii++)
@@ -307,7 +335,11 @@ int returnIndexOfVector(vs &stringVector, string value)		// Returns the index of
 	return -1;
 }
 
-double printPredictionsAndCalculateAccuracy(vs &givenData, vs &predictions)		// Outputs the predictions to file and returns the accuracy of the classification
+/*
+ * Outputs the predictions to file
+ * and returns the accuracy of the classification
+ */
+double printPredictionsAndCalculateAccuracy(vs &givenData, vs &predictions)
 {
 	ofstream outputFile;
 	outputFile.open("decisionTreeOutput.txt");
@@ -335,7 +367,13 @@ double printPredictionsAndCalculateAccuracy(vs &givenData, vs &predictions)		// 
 	return (double) correct/50 * 100;
 }
 
-vvs generateTableInfo(vvs &dataTable)		// Generates information about the table in a vector of vector of stings
+/*
+ * Returns a vvs which contains information about
+ * the data table. The vvs contains the names of
+ * all the columns and the values that each
+ * column can take
+ */
+vvs generateTableInfo(vvs &dataTable)
 {
 	vvs tableInfo;
 	for (int iii = 0; iii < dataTable[0].size(); iii++)
@@ -359,9 +397,13 @@ vvs generateTableInfo(vvs &dataTable)		// Generates information about the table 
 	return tableInfo;
 }
 
-string returnMostFrequentClass(vvs &dataTable)		// Returns the most frequent class from the training data. This class is used as the default class during the testing phase
+/*
+ * Returns the most frequent class from the training data
+ * This class will be used as the default class label
+ */
+string returnMostFrequentClass(vvs &dataTable)
 {
-	msi trainingClasses;            // Stores the classlabels and their frequency
+	msi trainingClasses;           													 // Stores the classlabels and their frequency
 	for (int iii = 1; iii < dataTable.size(); iii++)
 	{
 		if (trainingClasses.count(dataTable[iii][dataTable[0].size()-1]) == 0)
