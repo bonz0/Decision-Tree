@@ -91,3 +91,7 @@ The column we want to predict is *restaurant*. The class labels are:
     ./dtree train.dat test.dat
 
 After the program finishes execution, open `decisionTreeOutput.txt` to view the output.
+
+### Tags
+
+`decision`, `tree`, `decision tree`, `decision tree code`, `decision tree C++`, `decision tree C`, `decision tree C++ code`.
