@@ -94,7 +94,23 @@ After the program finishes execution, open `decisionTreeOutput.txt` to view the 
 
 ### Technical Notes:
 
-The algorithm that builds the decision tree is a recursive algorithm and is implemented in the function `buildDecisionTree()` which is defined in `functions.cpp`.  
+The algorithm that builds the decision tree is a recursive algorithm and is implemented in the function `buildDecisionTree()` which is defined in `functions.cpp`. The algorithm works as follows:
+
+    if the sub-table passed to the algorithm is empty
+        return NULL;    // since there is no data in the table
+    if the sub-table passed to the algorithm is homogeneous (if all the rows have the same value for the last column)
+        mark this node as a leaf node;
+        label this node with the value of the last column
+        return a pointer to this node
+    else
+        decide a column to split the table on based on information gain
+        set the node's splitOn value to this column's name
+        for all the values that the splitting column can take:
+            create a new node
+            set the new node as the current node's child node
+            prune the sub-table so that all the rows with this value of the last column are removed
+            recursively call the function by passing it the new pruned table and the new node
+
 The splitting column is decided based on information gain. This information gain is calculated using entropy which is a measure of randomness of information. The less random a split leaves the table in, the more information we can gain from it. So we split the table on the column which gives us the most information gain (least entropy).
 
 ### Tags
