@@ -14,7 +14,7 @@ Notes:
 ------
 
 The program takes two files as input; a training file and a testing file. The output of the program is stored in a file named: `decisionTreeOutput.txt`.  
-The current program only supports string attributes (the values of the attributes must be string. Numerical values are not currently supported).
+The current program only supports string attributes (the values of the attributes must be of string type. Numerical values are not currently supported. Any numerical values will be treated as strings.).
 
 ### Input file format:
 
