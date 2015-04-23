@@ -263,7 +263,7 @@ void printDecisionTree(node* nodePtr)
 string testDataOnDecisionTree(vs &singleLine, node* nodePtr, vvs &tableInfo, string defaultClass)
 {
 	string prediction;
-	while (nodePtr->isLeaf != true && !nodePtr->children.empty()) {
+	while (!nodePtr->isLeaf && !nodePtr->children.empty()) {
 		int index = returnColumnIndex(nodePtr->splitOn, tableInfo);
 		string value = singleLine[index];
 		int childIndex = returnIndexOfVector(nodePtr->childrenValues, value);
