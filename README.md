@@ -68,7 +68,7 @@ This table will be represented in the training and testing files as:
     none,twitter,mac,no
 
 Sample training (`train.dat`) and testing (`test.dat`) files have been included.  
-In the sample files, we're trying to predict which restaurant (*Buck-I-Mart*/*Oxley's*/*Brennan's*/*Oxley's Cafe*) a customer will go to based on:
+In the sample files, we're trying to predict which restaurant (*Buck-I-Mart*/*Oxley's*/*Brennan's*/*Oxley's Cafe*) a customer will go to based on the following things:
 
 * How quickly a customer wants the meal (Column name: *speed*. Values that *speed* can take: *quick*, *leisurely*, *medium*).
 * Meal preference (Column name: *meal*. Values that *meal* can take: *soup*, *sandwich*, *other*).
